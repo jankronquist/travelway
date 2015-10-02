@@ -15,13 +15,12 @@
         });
         var User = React.createClass({
           render: function() {
-            return <div><p>Hello {this.props.userId}</p><img src={this.props.picture}/></div>;
+            return <div><p>Hello {this.props.name}</p><img src={this.props.picture}/></div>;
           }
         });
         FB.getLoginStatus(function(response) {
           if (response.status === 'connected') {
             var uid = response.authResponse.userID;
-            var accessToken = response.authResponse.accessToken;
             FB.api('/me', 'get', {fields: 'name,picture'}, function(response) {
               React.render(<User userId={uid} name={response.name} picture={response.picture.data.url}/>, document.getElementById('example'));
             });
@@ -72,12 +71,24 @@
         }
       });
     }
+
+    function email() {
+      Parse.Cloud.run('email', { movie: 'The Matrix' }, {
+        success: function(r) {
+          alert("Done: " + r);
+        },
+        error: function(error) {
+          alert("Error: " + error);
+        }
+      });
+    }
   </script>
 
 
   </head>
   <body>
     <h1>Travelway</h1>
+    <button onclick="email()">Email</button>
     <div id="example"><img src="https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif"/> </div>
   </body>
 </html>
