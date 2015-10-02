@@ -4,22 +4,51 @@
   <head>
     <title>Sample App</title>
 
-    <script src="//www.parsecdn.com/js/parse-1.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script type="text/jsx">
+      function renderStuff() {
+        var ExampleApplication = React.createClass({
+          render: function() {
+            return <button onclick="login()">Click me</button>;
+          }
+        });
+        var User = React.createClass({
+          render: function() {
+            return <div><p>Hello {this.props.userId}</p><img src={this.props.picture}/></div>;
+          }
+        });
+        FB.getLoginStatus(function(response) {
+          if (response.status === 'connected') {
+            var uid = response.authResponse.userID;
+            var accessToken = response.authResponse.accessToken;
+            FB.api('/me', 'get', {fields: 'name,picture'}, function(response) {
+              React.render(<User userId={uid} name={response.name} picture={response.picture.data.url}/>, document.getElementById('example'));
+            });
+          } else {
+            React.render(<ExampleApplication/>, document.getElementById('example'));
+            // the user isn't logged in to Facebook.
+          }
+         });
+        }
+    </script>
+
+    <script src="https://www.parsecdn.com/js/parse-1.6.4.min.js"></script>
   <script>
     // Initialize Parse
     Parse.initialize("rYcUePAltMaYm7NsrRtgeUDzS2k7DcVYKEB3Y69O", "EtNnimCpjL2Vn49gWBTonDpMFDhdIv7rkEvPpGZL");
 
         window.fbAsyncInit = function() {
-      Parse.FacebookUtils.init({ // this line replaces FB.init({
-        appId      : '1507030146280259', // Facebook App ID
-        status     : true,  // check Facebook Login status
-        cookie     : true,  // enable cookies to allow Parse to access the session
-        xfbml      : true,  // initialize Facebook social plugins on the page
-        version    : 'v2.3' // point to the latest Facebook Graph API version
-      });
+          Parse.FacebookUtils.init({ // this line replaces FB.init({
+            appId      : '1507030146280259', // Facebook App ID
+            cookie     : true,  // enable cookies to allow Parse to access the session
+            xfbml      : true,  // initialize Facebook social plugins on the page
+            version    : 'v2.3' // point to the latest Facebook Graph API version
+          });
 
           // Run code after the Facebook SDK is loaded.
-    };
+          renderStuff();
+        };
 
         (function(d, s, id){
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -28,13 +57,27 @@
       js.src = "//connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+    
+    function login() {
+      Parse.FacebookUtils.logIn(null, {
+        success: function(user) {
+          if (!user.existed()) {
+            alert("User signed up and logged in through Facebook!");
+          } else {
+            alert("User logged in through Facebook!");
+          }
+        },
+        error: function(user, error) {
+          alert("User cancelled the Facebook login or did not fully authorize.");
+        }
+      });
+    }
   </script>
+
 
   </head>
   <body>
-  
-    
-    <h1>Hello World</h1>
-    <p><%= message %></p>
+    <h1>Travelway</h1>
+    <div id="example"><img src="https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif"/> </div>
   </body>
 </html>
