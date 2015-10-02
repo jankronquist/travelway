@@ -25,6 +25,16 @@ app.get('/hello', function(req, res) {
   });
 });
 
+app.get('/user', function(req, res) {
+  var currentUser = Parse.User.current();
+  if (currentUser) {
+    res.render('hello', { message: 'user: ' + currentUser });
+  } else {
+    res.render('hello', { message: 'no user: '});
+  }
+});
+
+
 // // Example reading from the request query string of an HTTP get request.
 // app.get('/test', function(req, res) {
 //   // GET http://example.parseapp.com/test?message=hello
