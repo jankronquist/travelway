@@ -25,6 +25,10 @@ app.get('/hello', function(req, res) {
   });
 });
 
+app.get('/createTrip', function(req, res) {
+  res.render('createTripForm', { });
+});
+
 app.get('/user', function(req, res) {
   var currentUser = Parse.User.current();
   if (currentUser) {
