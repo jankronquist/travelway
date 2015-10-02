@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "HelloParse": {
+      "applicationId": "rYcUePAltMaYm7NsrRtgeUDzS2k7DcVYKEB3Y69O"
+    },
+    "_default": {
+      "link": "travelway10"
+    }
+  }
+}
