@@ -1,0 +1,40 @@
+body {
+    background-color: #edf1f2;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 50px;
+}
+
+.theme-dropdown .dropdown-menu {
+    position: static;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+    margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+    width: auto;
+}
+
+.btn-primary {
+    background: #588f27;
+}
+
+.btn-primary:hover {
+    background: #a9cf54;
+}
+
+.vertical-flip {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.navbar {
+    background: #2980b9;
+}
