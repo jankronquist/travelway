@@ -1,7 +1,7 @@
 body {
     background-color: #edf1f2;
     font-family: 'Open Sans', sans-serif;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 .theme-dropdown .dropdown-menu {
@@ -26,6 +26,10 @@ body {
     background: #a9cf54;
 }
 
+.btn-primary:disabled {
+    background: #ecf0f1;
+}
+
 .vertical-flip {
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
@@ -37,4 +41,13 @@ body {
 
 .navbar {
     background: #2980b9;
+}
+
+h1 {
+    color: #588f27;
+    font-weight: bold;
+}
+
+.container {
+    width: 600px;
 }

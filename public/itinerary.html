@@ -9,6 +9,9 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,38 +25,83 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Jayway Madrid</h1>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <img src="/images/travelway-icon.png" height="100" style="float:right"/>
+</nav>
+
+<div class="container theme-showcase" role="main">
+    <h1>Jayway Madrid</h1>
 
 
-<ul class="nav nav-tabs" id="myTab">
-    <li class="active"><a id="aIt1" href="#aIt1" onClick="$('#aIt1').tab('show')">Itinerary 1</a></li>
-    <li id="liAdd"><a href="#add" onClick="addTab()">+</a></li>
-</ul>
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="active"><a id="aIt1" href="#aIt1" onClick="$('#aIt1').tab('show')">Itinerary 1</a></li>
+        <li id="liAdd"><a href="#add" onClick="addTab()">+</a></li>
+    </ul>
 
-<div class="tab-content">
-    <div class="tab-pane active" id="home">
-        <div>Dates</div>
-        <div>Flights</div>
-        <div>Transfer</div>
-        <div>Hotel</div>
-        <div>Restaurants</div>
-        <div>Activities</div>
-        <div>Contact Person</div>
+    <div class="tab-content">
+        <div class="tab-pane active" id="home">
+            <br/>
+            <button type="button" class="btn btn-lg btn-primary">Add event</button>
+            <br/>&nbsp;
+            <table class="table" style="width:400px">
+                <tbody>
+                <tr>
+                    <td><img src="/images/calendar.png" height="50"/></td>
+                    <td>2015-04-22 to 2015-04-26</td>
+                </tr>
+                <tr>
+                    <td><img src="/images/airplane.png" height="50"/></td>
+                    <td>
+                        <b>Norwegian 5411</b><br/>
+                        2015-04-22 Confirmation 7ZMMSD<br/>
+                        Depart: Copenhagen CPH 12:30<br/>
+                        Arrive: Madrid MAD 15:40<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="/images/transfer.png" height="50"/></td>
+                    <td>
+                        2015-04-22<br/>
+                        Depart: Madrid 16:30<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="/images/hotel.png" height="50"/></td>
+                    <td>
+                        Mayoral Hotel<br/>
+                        Avda. Castilla la Mancha nº 3<br/>
+                        45003 Toledo (Spain)<br/>
+                        Tel. 925 21 60 00<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="/images/airplane.png" height="50" class="vertical-flip"/></td>
+                    <td>
+                        <b>Norwegian 5412</b><br/>
+                        2015-04-26 Confirmation 7ZMMSD<br/>
+                        Depart: Madrid MAD 12:50<br/>
+                        Arrive: Copenhagen CPH 16:00<br/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane" id="profile"></div>
     </div>
-    <div class="tab-pane" id="profile"></div>
+
+    <script>
+        var tabCount = 1;
+        var addTab = function() {
+            tabCount++;
+            var add = $('#liAdd');
+            add.remove();
+            $('#myTab').append( $('<li><a id="aIt'+tabCount+'" href="#aIt2">Itinerary '+tabCount+'</a></li>') );
+            $('#myTab').append( add );
+        }
+
+    </script>
 </div>
-
-<script>
-    var tabCount = 1;
-    var addTab = function() {
-        tabCount++;
-        var add = $('#liAdd');
-        add.remove();
-        $('#myTab').append( $('<li><a id="aIt'+tabCount+'" href="#aIt2">Itinerary '+tabCount+'</a></li>') );
-        $('#myTab').append( add );
-    }
-
-</script>
 
 </body>
 </html>
