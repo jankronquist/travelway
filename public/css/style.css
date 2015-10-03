@@ -26,6 +26,18 @@ body {
     background: #a9cf54;
 }
 
+.btn-primary:active {
+    background: #a9cf54;
+}
+
+.btn-primary:focus {
+    background: #a9cf54;
+}
+
+.btn-primary:active:focus {
+    background: #a9cf54;
+}
+
 .btn-primary:disabled {
     background: #ecf0f1;
 }
